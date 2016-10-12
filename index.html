@@ -54,8 +54,22 @@ $(".state_call").append("<br>Llamando..."+"");
 
 });
 
-CallTrap.onCall(function(state){
+//CallTrap.onCall(function(state){ $(".state_phone").append("<br>Estatus: "+JSON.stringify(state)+""); });
+CallTrap.onCall(function(state) {
 $(".state_phone").append("<br>Estatus: "+JSON.stringify(state)+"");
+    console.log("CHANGE STATE: " + state);
+    switch (state) {
+        case "RINGING":
+            console.log("Phone is ringing");
+            break;
+        case "OFFHOOK":
+            console.log("Phone is off-hook");
+            break;
+
+        case "IDLE":
+            console.log("Phone is idle");
+            break;
+    }
 });
 </script>
 
