@@ -41,31 +41,27 @@ var d = new Date();
 call_num = function call_num(num) {
 if(num){
 phonedialer.dial(num, function(err) {
-if (err == "empty") {
-$(".state_call").append("<br>Numero desconocido o vacio."+" "+d.getMinutes()+":"+ d.getSeconds());
-}
-else {
-$(".state_call").append("<br>Error: " + err+". "+d.getMinutes()+":"+ d.getSeconds());
-}
+if (err == "empty") { $(".state_call").append("<br>Numero desconocido o vacio."+" "+d.getHours()+":"+d.getMinutes()+":"+ d.getSeconds()); }
+else { $(".state_call").append("<br>Error: " + err+". "+d.getHours()+":"+d.getMinutes()+":"+ d.getSeconds()); }
 },
 function(success) {
-$(".state_call").append("<br>Llamando... "+d.getMinutes()+":"+ d.getSeconds());
+$(".state_call").append("<br>Llamando... "+d.getHours()+":"+d.getMinutes()+":"+ d.getSeconds());
 }
 );
 }
 };
 
 $(".call_btn").on('click', function(){
-window.call_num("8331212892");
+//window.call_num("8331212892");
 var retry_call = setInterval(function() {
-$(".state_call").append("<br>Reiniciando... "+d.getMinutes()+":"+ d.getSeconds());
+$(".state_call").append("<br>Reiniciando... "+d.getHours()+":"+d.getMinutes()+":"+ d.getSeconds());
 window.call_num("8331212892");
-},10000);
+},30000);
 
 });
 
 //CallTrap.onCall(function(state){ $(".state_phone").append("<br>Estatus: "+JSON.stringify(state)+""); });
-CallTrap.onCall(function(state) {
+PhoneCallTrap.onCall(function(state) {
 $(".state_phone").append("<br>Estatus: "+state+"");
 });
 </script>
