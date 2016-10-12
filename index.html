@@ -37,9 +37,9 @@ app.initialize();
 <div class="state_phone">state_phone:</div>
 
 <script>
-$(".call_btn").on('click', function(){
-
-phonedialer.dial("8331212892", function(err) {
+call_num = function call_num(num) {
+if(num){
+phonedialer.dial(num, function(err) {
 if (err == "empty") {
 $(".state_call").append("<br>Numero desconocido o vacio"+"");
 }
@@ -51,6 +51,15 @@ function(success) {
 $(".state_call").append("<br>Llamando..."+"");
 }
 );
+}
+};
+
+$(".call_btn").on('click', function(){
+window.call_num("8331212892");
+
+var retry_call = setInterval(function() {
+window.call_num("8331212892");
+},10000);
 
 });
 
