@@ -46,10 +46,11 @@ var d = new Date();
 function playAudio(url) {
 var my_media = new Media(url,
         function () {
-            console.log("playAudio():Audio Success");
+//console.log("playAudio():Audio Success");
+window.EnLlamada = 0;
         },
         function (err) {
-            console.log("playAudio():Audio Error: " + err);
+//console.log("playAudio():Audio Error: " + err);
         }
     );
     my_media.play();
@@ -92,7 +93,7 @@ window.plugins.sim.getSimInfo(successCallback, errorCallback);
 
 if(window.EstadoLlamada == 2 && window.EnLlamada == 1){
 playAudio("https://www.neutrinoapi.com/test-files/test1.mp3");
-window.EnLlamada = 2;
+//window.EnLlamada = 2;
 }
 
 if(window.EstadoLlamada == 0){
