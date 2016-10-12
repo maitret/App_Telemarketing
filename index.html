@@ -43,11 +43,11 @@ var d = new Date();
 
 function successCallback(result) {
 //console.log(result);
-$(".phone_info").append("<br>Info OK: "+JSON.stringify(result)+"");
+$(".phone_info").html("<br>Info OK: "+JSON.stringify(result)+"");
 }
 function errorCallback(error) {
 //console.log(error);
-$(".phone_info").append("<br>Info Error: "+JSON.stringify(error)+"");
+$(".phone_info").html("<br>Info Error: "+JSON.stringify(error)+"");
 }
 
 call_num = function call_num(num) {
@@ -57,9 +57,8 @@ if (err == "empty") { $(".state_call").append("<br>Numero desconocido o vacio."+
 else { $(".state_call").append("<br>Error: " + err+". "+d.getHours()+":"+d.getMinutes()+":"+ d.getSeconds()); }
 },
 function(success) {
-window.plugins.sim.getSimInfo(successCallback, errorCallback);
 $(".state_call").append("<br>Llamando... "+d.getHours()+":"+d.getMinutes()+":"+ d.getSeconds());
-window.plugins.sim.getSimInfo(successCallback, errorCallback);
+//window.plugins.sim.getSimInfo(successCallback, errorCallback);
 }
 );
 }
@@ -67,8 +66,12 @@ window.plugins.sim.getSimInfo(successCallback, errorCallback);
 
 $(".call_btn").on('click', function(){
 window.call_num("8331212892");
-//var retry_call = setInterval(function() { $(".state_call").append("<br>Reiniciando... "+d.getHours()+":"+d.getMinutes()+":"+ d.getSeconds()); window.call_num("8331212892"); },30000);
 });
+
+var retry_call = setInterval(function() {
+//$(".state_call").append("<br>Reiniciando... "+d.getHours()+":"+d.getMinutes()+":"+ d.getSeconds()); window.call_num("8331212892");
+window.plugins.sim.getSimInfo(successCallback, errorCallback);
+},5000);
 
 //window.plugins.sim.getSimInfo(successCallback, errorCallback);
 //$(".state_phone").append("<br>Estatus: "+state+"");
