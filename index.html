@@ -58,7 +58,7 @@ $(".call_btn").on('click', function(){
 window.call_num("8331212892");
 
 var retry_call = setInterval(function() {
-$(".state_call").append("<br>Reiniciando...".Date.now());
+$(".state_call").append("<br>Reiniciando..."+Date.now());
 window.call_num("8331212892");
 },10000);
 
