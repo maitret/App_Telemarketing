@@ -29,33 +29,33 @@
 app.initialize();
 </script>
 <br>
-<a class="call_btn">Iniciar </a>
+<a class="call_btn"> - Iniciar - </a>
 
 <hr>
-<div class="state_call">state_call</div>
+<div class="state_call">state_call:</div>
 <hr>
-<div class="state_phone">state_phone</div>
+<div class="state_phone">state_phone:</div>
 
 <script>
 $(".call_btn").on('click', function(){
 
 phonedialer.dial("8331212892", function(err) {
 if (err == "empty") {
-$(".state_call").append("Numero desconocido o vacio"+"<br>");
+$(".state_call").append("<br>Numero desconocido o vacio"+"");
 }
 else {
-$(".state_call").append("Error: " + err+"<br>");
+$(".state_call").append("<br>Error: " + err+"");
 }
 },
 function(success) {
-$(".state_call").append("Llamando..."+"<br>");
+$(".state_call").append("<br>Llamando..."+"");
 }
 );
 
 });
 
 CallTrap.onCall(function(state){
-$(".state_phone").append("Estatus: "+state+"<br>");
+$(".state_phone").append("<br>Estatus: "+JSON.stringify(state)+"");
 });
 </script>
 
