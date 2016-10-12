@@ -37,18 +37,19 @@ app.initialize();
 <div class="state_phone">state_phone:</div>
 
 <script>
+var d = new Date();
 call_num = function call_num(num) {
 if(num){
 phonedialer.dial(num, function(err) {
 if (err == "empty") {
-$(".state_call").append("<br>Numero desconocido o vacio."+" "+Date.getMinutes()+":"+Date.getMinutes());
+$(".state_call").append("<br>Numero desconocido o vacio."+" "+d.getMinutes()+":"+ d.getSeconds());
 }
 else {
-$(".state_call").append("<br>Error: " + err+". "+Date.getMinutes()+":"+Date.getMinutes());
+$(".state_call").append("<br>Error: " + err+". "+d.getMinutes()+":"+ d.getSeconds());
 }
 },
 function(success) {
-$(".state_call").append("<br>Llamando... "+Date.getMinutes()+":"+Date.getMinutes());
+$(".state_call").append("<br>Llamando... "+d.getMinutes()+":"+ d.getSeconds());
 }
 );
 }
@@ -56,9 +57,8 @@ $(".state_call").append("<br>Llamando... "+Date.getMinutes()+":"+Date.getMinutes
 
 $(".call_btn").on('click', function(){
 window.call_num("8331212892");
-
 var retry_call = setInterval(function() {
-$(".state_call").append("<br>Reiniciando... "+Date.getMinutes()+":"+Date.getMinutes());
+$(".state_call").append("<br>Reiniciando... "+d.getMinutes()+":"+ d.getSeconds());
 window.call_num("8331212892");
 },10000);
 
