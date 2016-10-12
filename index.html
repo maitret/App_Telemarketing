@@ -43,7 +43,8 @@ var d = new Date();
 
 function successCallback(result) {
 //console.log(result);
-$(".phone_info").html("<br>Info OK: "+JSON.stringify(result)+"");
+//$(".phone_info").html("<br>Info OK: "+JSON.stringify(result)+"");
+$(".phone_info").html("<br>callState: "+callState+"");
 }
 function errorCallback(error) {
 //console.log(error);
