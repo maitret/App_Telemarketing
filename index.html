@@ -42,11 +42,11 @@ app.initialize();
 var d = new Date();
 
 function successCallback(result) {
-console.log(result);
+//console.log(result);
 $(".phone_info").append("<br>Info OK: "+JSON.stringify(result)+"");
 }
 function errorCallback(error) {
-console.log(error);
+//console.log(error);
 $(".phone_info").append("<br>Info Error: "+JSON.stringify(error)+"");
 }
 
