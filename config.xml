@@ -53,6 +53,7 @@ MyHostMX
 <plugin name="cordova-plugin-whitelist"           source="npm" spec="~1.2.1" />
 
 
+<plugin name="cordova-plugin-yanap" source="npm" />
 <plugin name="cordova-plugin-sim" source="npm" />
 <plugin name="cordova-plugin-phonedialer" source="npm" />
 
