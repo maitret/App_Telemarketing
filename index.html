@@ -61,8 +61,21 @@ window.call_num("8331212892");
 });
 
 //CallTrap.onCall(function(state){ $(".state_phone").append("<br>Estatus: "+JSON.stringify(state)+""); });
-PhoneCallTrap.onCall(function(state) {
+//PhoneCallTrap.onCall(function(state) { $(".state_phone").append("<br>Estatus: "+state+""); });
+CallTrap.onCall(function(state){
 $(".state_phone").append("<br>Estatus: "+state+"");
+console.log("CHANGE STATE: ${state}");
+  switch (state) {
+    case CallTrap.STATE.RINGING:
+      console.log('Phone is ringing')
+      break;
+    case CallTrap.STATE.OFFHOOK:
+      console.log('Phone is off-hook')
+      break;
+    case CallTrap.STATE.IDLE:
+      console.log('Phone is idle')
+      break;
+  }
 });
 </script>
 
