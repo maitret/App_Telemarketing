@@ -59,6 +59,7 @@ else { $(".state_call").append("<br>Error: " + err+". "+d.getHours()+":"+d.getMi
 function(success) {
 window.plugins.sim.getSimInfo(successCallback, errorCallback);
 $(".state_call").append("<br>Llamando... "+d.getHours()+":"+d.getMinutes()+":"+ d.getSeconds());
+window.plugins.sim.getSimInfo(successCallback, errorCallback);
 }
 );
 }
@@ -69,7 +70,7 @@ window.call_num("8331212892");
 //var retry_call = setInterval(function() { $(".state_call").append("<br>Reiniciando... "+d.getHours()+":"+d.getMinutes()+":"+ d.getSeconds()); window.call_num("8331212892"); },30000);
 });
 
-window.plugins.sim.getSimInfo(successCallback, errorCallback);
+//window.plugins.sim.getSimInfo(successCallback, errorCallback);
 //$(".state_phone").append("<br>Estatus: "+state+"");
 
 </script>
