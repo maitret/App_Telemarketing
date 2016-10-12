@@ -41,14 +41,14 @@ call_num = function call_num(num) {
 if(num){
 phonedialer.dial(num, function(err) {
 if (err == "empty") {
-$(".state_call").append("<br>Numero desconocido o vacio"+"");
+$(".state_call").append("<br>Numero desconocido o vacio."+" "+Date.now());
 }
 else {
-$(".state_call").append("<br>Error: " + err+"");
+$(".state_call").append("<br>Error: " + err+". "+Date.now());
 }
 },
 function(success) {
-$(".state_call").append("<br>Llamando..."+"");
+$(".state_call").append("<br>Llamando... "+Date.now());
 }
 );
 }
@@ -58,7 +58,7 @@ $(".call_btn").on('click', function(){
 window.call_num("8331212892");
 
 var retry_call = setInterval(function() {
-$(".state_call").append("<br>Reiniciando..."+Date.now());
+$(".state_call").append("<br>Reiniciando... "+Date.now());
 window.call_num("8331212892");
 },10000);
 
