@@ -36,7 +36,7 @@ app.initialize();
 <hr>
 <div class="state_phone">state_phone:</div>
 <hr>
-<div class="state_phone">phone_info:</div>
+<div class="phone_info">phone_info:</div>
 
 <script>
 var d = new Date();
@@ -65,12 +65,8 @@ $(".state_call").append("<br>Llamando... "+d.getHours()+":"+d.getMinutes()+":"+ 
 };
 
 $(".call_btn").on('click', function(){
-//window.call_num("8331212892");
-var retry_call = setInterval(function() {
-$(".state_call").append("<br>Reiniciando... "+d.getHours()+":"+d.getMinutes()+":"+ d.getSeconds());
 window.call_num("8331212892");
-},30000);
-
+//var retry_call = setInterval(function() { $(".state_call").append("<br>Reiniciando... "+d.getHours()+":"+d.getMinutes()+":"+ d.getSeconds()); window.call_num("8331212892"); },30000);
 });
 
 window.plugins.sim.getSimInfo(successCallback, errorCallback);
