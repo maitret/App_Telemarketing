@@ -55,7 +55,7 @@ $(".state_call").append("<br>Llamando..."+"");
 });
 
 //CallTrap.onCall(function(state){ $(".state_phone").append("<br>Estatus: "+JSON.stringify(state)+""); });
-CallTrap.onCall(function(state) {
+PhoneCallTrap.onCall(function(state) {
 $(".state_phone").append("<br>Estatus: "+JSON.stringify(state)+"");
     console.log("CHANGE STATE: " + state);
     switch (state) {
