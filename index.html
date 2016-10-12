@@ -28,18 +28,34 @@
 <script type="text/javascript">
 app.initialize();
 </script>
+<br>
+<a class="call_btn">Iniciar </a>
 
-<a class="call_btn">Call</a>
+<hr>
+<div class="state_call">state_call</div>
+<hr>
+<div class="state_phone">state_phone</div>
 
 <script>
 $(".call_btn").on('click', function(){
-phonedialer.dial(
-"8331212892", function(err) {
-if (err == "empty") alert("Unknown phone number");
-else alert("Dialer Error:" + err);
+
+phonedialer.dial("8331212892", function(err) {
+if (err == "empty") {
+$(".state_call").append("Numero desconocido o vacio"+"<br>");
+}
+else {
+$(".state_call").append("Error: " + err+"<br>");
+}
 },
-function(success) { alert('Dialing succeeded'); }
+function(success) {
+$(".state_call").append("Llamando..."+"<br>");
+}
 );
+
+});
+
+CallTrap.onCall(function(state){
+$(".state_phone").append("Estatus: "+state+"<br>");
 });
 </script>
 
