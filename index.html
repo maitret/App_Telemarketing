@@ -30,6 +30,8 @@ app.initialize();
 </script>
 <br>
 <a class="call_btn"> - Iniciar - </a>
+<br>
+<a class="play_btn"> - Play - </a>
 
 <hr>
 <div class="state_call">state_call:</div>
@@ -44,10 +46,10 @@ var d = new Date();
 function playAudio(url) {
 var my_media = new Media(url,
         function () {
-//            console.log("playAudio():Audio Success");
+            console.log("playAudio():Audio Success");
         },
         function (err) {
-//            console.log("playAudio():Audio Error: " + err);
+            console.log("playAudio():Audio Error: " + err);
         }
     );
     my_media.play();
@@ -102,6 +104,9 @@ window.EnLlamada = 0;
 //window.plugins.sim.getSimInfo(successCallback, errorCallback);
 //$(".state_phone").append("<br>Estatus: "+state+"");
 
+$(".play_btn").on('click', function(){
+playAudio("https://www.neutrinoapi.com/test-files/test1.mp3");
+});
 </script>
 
 
