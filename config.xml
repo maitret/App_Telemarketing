@@ -6,14 +6,14 @@ xmlns:gap = "http://phonegap.com/ns/1.0"
 id        = "in.telemarketing.app"
 version   = "1.0.0">
 
-<name>Hello World</name>
+<name>TeleMarketing App</name>
 
 <description>
-Hello World sample application that responds to the deviceready event.
+App para realizar llamadas de Telemarketing automatizadas
 </description>
 
 <author href="http://www.myhostmx.com" email="hola@telemarketing.in">
-PhoneGap Team
+MyHostMX
 </author>
 
 <!-- Define the main entry-point to the application -->
