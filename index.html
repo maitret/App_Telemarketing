@@ -44,7 +44,6 @@ app.initialize();
 var d = new Date();
 
 function playAudio(url) {
-/*
 var my_media = new Media(url,
         function () {
 //console.log("playAudio():Audio Success");
@@ -55,12 +54,6 @@ window.EnLlamada = 0;
         }
     );
     my_media.play();
-*/
-var Yanap = cordova.plugins.Yanap;
-var myBackgroundLoop = new Yanap.AudioInstance(Yanap.AUDIO_TYPE.LOOP);
-myBackgroundLoop.load(url);
-myBackgroundLoop.play();
-
 }
 
 function successCallback(result) {
