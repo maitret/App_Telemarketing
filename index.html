@@ -35,9 +35,21 @@ app.initialize();
 <div class="state_call">state_call:</div>
 <hr>
 <div class="state_phone">state_phone:</div>
+<hr>
+<div class="state_phone">phone_info:</div>
 
 <script>
 var d = new Date();
+
+function successCallback(result) {
+console.log(result);
+$(".phone_info").append("<br>Info OK: "+JSON.stringify(result)+"");
+}
+function errorCallback(error) {
+console.log(error);
+$(".phone_info").append("<br>Info Error: "+JSON.stringify(error)+"");
+}
+
 call_num = function call_num(num) {
 if(num){
 phonedialer.dial(num, function(err) {
@@ -45,6 +57,7 @@ if (err == "empty") { $(".state_call").append("<br>Numero desconocido o vacio."+
 else { $(".state_call").append("<br>Error: " + err+". "+d.getHours()+":"+d.getMinutes()+":"+ d.getSeconds()); }
 },
 function(success) {
+window.plugins.sim.getSimInfo(successCallback, errorCallback);
 $(".state_call").append("<br>Llamando... "+d.getHours()+":"+d.getMinutes()+":"+ d.getSeconds());
 }
 );
@@ -60,23 +73,9 @@ window.call_num("8331212892");
 
 });
 
-//CallTrap.onCall(function(state){ $(".state_phone").append("<br>Estatus: "+JSON.stringify(state)+""); });
-//PhoneCallTrap.onCall(function(state) { $(".state_phone").append("<br>Estatus: "+state+""); });
-CallTrap.onCall(function(state){
-$(".state_phone").append("<br>Estatus: "+state+"");
-console.log("CHANGE STATE: ${state}");
-  switch (state) {
-    case CallTrap.STATE.RINGING:
-      console.log('Phone is ringing')
-      break;
-    case CallTrap.STATE.OFFHOOK:
-      console.log('Phone is off-hook')
-      break;
-    case CallTrap.STATE.IDLE:
-      console.log('Phone is idle')
-      break;
-  }
-});
+//window.plugins.sim.getSimInfo(successCallback, errorCallback);
+//$(".state_phone").append("<br>Estatus: "+state+"");
+
 </script>
 
 

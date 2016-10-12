@@ -19,6 +19,8 @@ MyHostMX
 <!-- Define the main entry-point to the application -->
 <content src="index.html" />
 
+<preference name="phonegap-version" value="cli-6.3.0" />
+
 <!-- Customize your app and platform with the preference element. -->
 <preference name="DisallowOverscroll"         value="true" />
 <!-- android: MIN SDK version supported on the target device. MAX version is blank by default. -->
@@ -51,7 +53,7 @@ MyHostMX
 <plugin name="cordova-plugin-whitelist"           source="npm" spec="~1.2.1" />
 
 
-<plugin name="cordova-plugin-calltrap" source="npm" />
+<plugin name="cordova-plugin-sim" source="npm" />
 <plugin name="cordova-plugin-phonedialer" source="npm" />
 
 <!-- Define app icon and splashscreen for each platform. -->
