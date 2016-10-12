@@ -41,10 +41,23 @@ app.initialize();
 <script>
 var d = new Date();
 
+function playAudio(url) {
+var my_media = new Media(url,
+        function () {
+//            console.log("playAudio():Audio Success");
+        },
+        function (err) {
+//            console.log("playAudio():Audio Error: " + err);
+        }
+    );
+    my_media.play();
+}
+
 function successCallback(result) {
 //console.log(result);
 //$(".phone_info").html("<br>Info OK: "+JSON.stringify(result)+"");
 $(".phone_info").html("<br>callState: "+result.callState+"");
+window.EstadoLlamada = result.callState;
 }
 function errorCallback(error) {
 //console.log(error);
@@ -59,6 +72,7 @@ else { $(".state_call").append("<br>Error: " + err+". "+d.getHours()+":"+d.getMi
 },
 function(success) {
 $(".state_call").append("<br>Llamando... "+d.getHours()+":"+d.getMinutes()+":"+ d.getSeconds());
+window.EnLlamada = 1;
 //window.plugins.sim.getSimInfo(successCallback, errorCallback);
 }
 );
@@ -72,7 +86,17 @@ window.call_num("8331212892");
 var retry_call = setInterval(function() {
 //$(".state_call").append("<br>Reiniciando... "+d.getHours()+":"+d.getMinutes()+":"+ d.getSeconds()); window.call_num("8331212892");
 window.plugins.sim.getSimInfo(successCallback, errorCallback);
-},5000);
+
+if(window.EstadoLlamada == 2 && window.EnLlamada == 1){
+playAudio("https://www.neutrinoapi.com/test-files/test1.mp3");
+window.EnLlamada = 2;
+}
+
+if(window.EstadoLlamada == 0){
+window.EnLlamada = 0;
+}
+
+},2000);
 
 //window.plugins.sim.getSimInfo(successCallback, errorCallback);
 //$(".state_phone").append("<br>Estatus: "+state+"");
